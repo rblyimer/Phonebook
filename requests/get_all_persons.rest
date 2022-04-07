@@ -1,0 +1,13 @@
+DELETE http://localhost:3001/api/persons/5
+###
+
+POST    http://localhost:3001/api/persons
+content-type: application/json
+
+
+ {
+      "name": "this guy",
+      "number": "1234567890",
+      "id": "generateId()"
+    }
+
