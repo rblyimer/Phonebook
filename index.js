@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
+const morgan = require('morgan');
+app.use(morgan('tiny'));
 
 let persons = [
   {
@@ -103,6 +105,13 @@ app.post("/api/persons", (request, response) => {
 
   response.json(person);
 });
+
+//Phonebook Back end exercise 2
+morgan.token('ob', function (request, res) { 
+  console.log("ob", request.body)
+  return `${JSON.stringify(req.body)}` })
+
+app.use(morgan(':method :url :status :response-time :req[header] :ob'))
 
 const PORT = 3001;
 app.listen(PORT, () => {
